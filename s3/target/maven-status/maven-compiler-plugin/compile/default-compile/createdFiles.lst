@@ -1,0 +1,12 @@
+com\s3cmd\s3\highApi\HighLevelAbortMultipartUpload.class
+com\s3cmd\s3\highApi\HighLevelTrackMultipartUpload.class
+com\s3cmd\s3\S3Application.class
+com\s3cmd\s3\lowApi\AmazonS2.class
+com\s3cmd\s3\highApi\AmazonS.class
+com\s3cmd\s3\v6v4\DualStackEndpoints.class
+com\s3cmd\util\V4v6.class
+com\s3cmd\s3\highApi\HighLevelTrackMultipartUpload$1.class
+com\s3cmd\s3\highApi\AmazonS$1.class
+com\s3cmd\s3\lowApi\LowLevelAbortMultipartUpload.class
+com\s3cmd\util\S3Client.class
+com\s3cmd\s3\lowApi\ListMultipartUploads.class

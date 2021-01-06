@@ -1,0 +1,11 @@
+E:\java\s3\src\main\java\com\s3cmd\util\S3Client.java
+E:\java\s3\src\main\java\com\s3cmd\s3\singleUpload\UploadObject.java
+E:\java\s3\src\main\java\com\s3cmd\s3\highApi\HighLevelAbortMultipartUpload.java
+E:\java\s3\src\main\java\com\s3cmd\s3\S3Application.java
+E:\java\s3\src\main\java\com\s3cmd\s3\highApi\HighLevelTrackMultipartUpload.java
+E:\java\s3\src\main\java\com\s3cmd\s3\lowApi\AmazonS2.java
+E:\java\s3\src\main\java\com\s3cmd\s3\highApi\AmazonS.java
+E:\java\s3\src\main\java\com\s3cmd\s3\lowApi\LowLevelAbortMultipartUpload.java
+E:\java\s3\src\main\java\com\s3cmd\s3\lowApi\ListMultipartUploads.java
+E:\java\s3\src\main\java\com\s3cmd\s3\v6v4\DualStackEndpoints.java
+E:\java\s3\src\main\java\com\s3cmd\util\V4v6.java
