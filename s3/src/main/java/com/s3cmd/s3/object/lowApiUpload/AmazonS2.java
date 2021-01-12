@@ -26,10 +26,13 @@ public class AmazonS2 {
     private static FileWriter fileWriter;
 
     public static void partUpload(String bucketName, String keyName, String filePath) {
-        AmazonS3 s3Client = S3Client.getS3();
+        String access_key = "6DEB63B3F2314C57A5377C29D4782E5D1533";
+        String secret_key = "261845A5C87543449964EFD5ED575AD41512";
+        String endpoint = "http://s3.dev.com:8080";
+        AmazonS3 s3Client = S3Client.getS3Client(access_key,secret_key,endpoint);
         File file = new File(filePath);
         long contentLength = file.length();
-        long partSize = 15 * 1024 * 1024; // Set part size to 5 MB.
+        long partSize = 5 * 1024 * 1024; // Set part size to 5 MB.
         try {
             /*创建一个ETag对象列表。将为每个上传的对象部分检索ETags，
             然后，在每个单独的部分被上传之后，将etag列表传递给请求以完成上传。*/
@@ -43,6 +46,8 @@ public class AmazonS2 {
             for (int i = 1; filePosition < contentLength; i++) {
                 // 因为最后一个分片可能小于5mb，所以根据需要调整分片大小
                 partSize = Math.min(partSize, (contentLength - filePosition));
+                ObjectMetadata objectMetadata =new ObjectMetadata();
+                objectMetadata.setHeader("x-amz-tagging","dd=dd,mmm=mm");
                 // 创建上传部件的请求.
                 UploadPartRequest uploadRequest = new UploadPartRequest()
                         .withBucketName(bucketName)
@@ -52,8 +57,8 @@ public class AmazonS2 {
                         .withFileOffset(filePosition)
                         .withFile(file)
                         .withPartSize(partSize);
-
-                // 上传该部分并将响应的ETag添加到我们的列表中
+                uploadRequest.setObjectMetadata(objectMetadata);
+                // 上传该部分并将响应的ETag添加到列表中
                 UploadPartResult uploadResult = s3Client.uploadPart(uploadRequest);
                 partETags.add(uploadResult.getPartETag());
                 filePosition += partSize;
@@ -71,9 +76,11 @@ public class AmazonS2 {
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
             }
+
             // 完成多部分上传.
             CompleteMultipartUploadRequest compRequest = new CompleteMultipartUploadRequest(bucketName, keyName,
                     initResponse.getUploadId(), partETags);
+
             s3Client.completeMultipartUpload(compRequest);
         } catch (AmazonServiceException e) {
             //调用被成功传输，但是Amazon S3不能处理它，所以它返回一个错误响应
@@ -95,6 +102,6 @@ public class AmazonS2 {
     }
 
     public static void main(String[] args) throws IOException {
-        partUpload("hyqhyq", "1234.zip", "E:\\AI\\大数据AI软件\\1235.zip");
+        partUpload("hyqhyq", "pip-master.zip", "E:\\AI\\大数据AI软件\\pip-master.zip");
     }
 }

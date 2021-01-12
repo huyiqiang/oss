@@ -31,7 +31,6 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
-
         <!--指定使用 aws-sdk java模块 -->
         <dependency>
             <groupId>com.amazonaws</groupId>

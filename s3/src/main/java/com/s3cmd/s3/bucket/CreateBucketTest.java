@@ -49,14 +49,14 @@ public class CreateBucketTest {
 
 
         public static void main(String args[]){
-            String access_key = "0A52F27732A14E82BFB03744C6324AC55773";
-            String secret_key = "E7C1FC19586040D58C0AF8E494FC58EE1561";
+            String access_key = "6DEB63B3F2314C57A5377C29D4782E5D1533";
+            String secret_key = "261845A5C87543449964EFD5ED575AD41512";
             String endpoint = "http://s3.dev.com:8080";
             CreateBucketTest createBucketTest =new CreateBucketTest();
            AmazonS3 s3Client = createBucketTest.getS3Client(access_key, secret_key, endpoint);
 //            AmazonS3 s3Client = S3Client.getS3();
-            String bucketName = "demo";
-           createBucketTest.testCreateBucket(s3Client,bucketName);
+            String bucketName = "123";
+//           createBucketTest.testCreateBucket(s3Client,bucketName);
 
             System.out.println("创建后查询");
             createBucketTest.testListBuckets(s3Client);
